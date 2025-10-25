@@ -3,199 +3,248 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="FastRide Cabs - Your reliable taxi service for comfort, safety, and 24/7 availability. Book your ride today!">
-    <title>FastRide Cabs - Fast, Safe, Reliable</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <meta name="description" content="FastRide Cabs - Your reliable 24/7 taxi service. Safe, comfortable, and affordable rides across the city.">
+    <title>FastRide Cabs - Your Ride, Our Priority</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Define Primary Color Palette */
-        :root {
-            --primary-color: #FFC300; /* A vibrant Yellow/Gold */
-            --secondary-color: #000000;
-            --background-light: #f4f4f4;
-            --text-dark: #333333;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-yellow: #FFC107;
+            --dark-yellow: #FFB300;
+            --light-yellow: #FFECB3;
+            --black: #1a1a1a;
+            --white: #ffffff;
+            --gray-light: #f8f9fa;
+            --gray-medium: #e0e0e0;
+            --gray-dark: #6c757d;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #ffffff;
-            color: var(--text-dark);
-            line-height: 1.7;
+            background-color: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        html {
             scroll-behavior: smooth;
         }
 
         /* Header & Navigation */
         header {
-            background-color: #ffffff;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            transition: all 0.3s ease;
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
-            max-width: 1280px;
+            padding: 1.2rem 5%;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         .logo {
             font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--secondary-color);
-            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--black);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        .logo i {
-            color: var(--primary-color);
-            margin-right: 5px;
+
+        .logo-icon {
+            color: var(--primary-yellow);
+            font-size: 2rem;
         }
 
         .nav-links {
             list-style: none;
             display: flex;
             gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links li {
+            position: relative;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 600;
-            transition: color 0.3s ease, border-bottom 0.3s ease;
-            padding-bottom: 5px;
-            position: relative;
+            color: var(--black);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+            display: inline-block;
         }
 
-        .nav-links a:hover, .nav-links .active {
-            color: var(--primary-color);
+        .nav-links a:hover {
+            color: var(--primary-yellow);
         }
 
-        /* Active Link Indicator with Animation */
         .nav-links .active::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -12px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100%;
-            height: 3px;
-            background-color: var(--primary-color);
-            border-radius: 2px;
-            animation: expand 0.3s ease-out;
-        }
-        @keyframes expand {
-            from { width: 0; }
-            to { width: 100%; }
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary-yellow);
+            border-radius: 50%;
+            animation: dotFadeIn 0.3s ease;
         }
 
+        @keyframes dotFadeIn {
+            from { opacity: 0; transform: translateX(-50%) scale(0); }
+            to { opacity: 1; transform: translateX(-50%) scale(1); }
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--black);
+            transition: all 0.3s ease;
+        }
+
+        /* Main Content */
         main {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem;
+            width: 100%;
         }
 
         section {
-            margin-bottom: 4rem;
-            padding-top: 2rem; /* Spacing for sticky header */
-            display: none; /* Hidden by default for single-page nav */
-            animation: fadeInSection 0.6s ease-out;
+            display: none;
+            animation: fadeIn 0.5s ease;
         }
+
         section.active {
             display: block;
         }
 
-        @keyframes fadeInSection {
+        @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        h1, h2, h3 {
-            margin-bottom: 1rem;
-            color: var(--secondary-color);
-            font-weight: 700;
-        }
-        h1 { font-size: 2.5rem; }
-        h2 { font-size: 2rem; border-bottom: 2px solid var(--primary-color); padding-bottom: 0.5rem; display: inline-block;}
-        h3 { font-size: 1.4rem; }
-
-        /* Buttons */
-        .btn {
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-            padding: 0.85rem 2rem;
-            border: none;
-            border-radius: 50px; /* Pill shape */
-            cursor: pointer;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 10px rgba(255, 195, 0, 0.4);
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
         }
 
-        .btn:hover {
-            background-color: #e6b100;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(255, 195, 0, 0.6);
-        }
-        
-        /* Hero Section Styling */
-        #hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://source.unsplash.com/featured/?yellow taxi,city night') no-repeat center center/cover;
-            height: 75vh;
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1600') center/cover no-repeat;
+            height: 85vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: #ffffff;
-            border-radius: 12px;
-            margin-bottom: 3rem;
-            animation: slideIn 1s ease-out;
+            color: var(--white);
+            position: relative;
         }
-        #hero h1 {
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
             font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            color: #ffffff;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        #hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 1rem auto 2rem;
-        }
-
-        /* Cards and Grid */
-        .card {
-            background-color: #ffffff;
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            border-top: 5px solid var(--primary-color);
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 6px;
+            font-weight: 700;
             margin-bottom: 1rem;
+            line-height: 1.2;
         }
 
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background-color: var(--primary-yellow);
+            color: var(--black);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: var(--dark-yellow);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 193, 7, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--black);
+        }
+
+        /* Section Styles */
+        .section-padding {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--gray-dark);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Grid System */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -203,120 +252,511 @@
             margin-top: 2rem;
         }
 
-        /* Rental Table Styling */
-        #rental table {
-            border: 2px solid var(--primary-color);
-            margin-top: 1.5rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-        #rental th, #rental td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-        }
-        #rental th {
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-        #rental tr:nth-child(even) {
-            background-color: var(--background-light);
-        }
-        #rental tr:hover {
-            background-color: #ffeaa7; /* Light hover effect */
-        }
-        #rental .btn {
-            margin-top: 1.5rem;
+        .grid-4 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         }
 
-        /* Forms */
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            max-width: 600px;
-            margin: 2rem 0;
+        /* Card Styles */
+        .card {
+            background-color: var(--white);
+            border-radius: 15px;
             padding: 2rem;
-            background-color: var(--background-light);
-            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-medium);
         }
 
-        input, textarea {
-            padding: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-family: 'Poppins', sans-serif;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
-        input:focus, textarea:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 5px rgba(255, 195, 0, 0.5);
-            outline: none;
-        }
-        
-        iframe {
+
+        .card img {
             width: 100%;
-            height: 350px;
-            border-radius: 8px;
-            margin-top: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--secondary-color);
-            color: #ffffff;
-            text-align: center;
-            padding: 2.5rem 2rem;
-            margin-top: 3rem;
-        }
-
-        footer p {
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
             margin-bottom: 1rem;
         }
 
-        footer a {
-            color: var(--primary-color);
-            margin: 0 1rem;
+        .card h3 {
             font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--black);
+        }
+
+        .card p {
+            color: var(--gray-dark);
+            margin-bottom: 1rem;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
+        }
+
+        /* Feature Cards */
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--gray-light);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background-color: var(--light-yellow);
+            transform: scale(1.05);
+        }
+
+        /* Stats Section */
+        .stats {
+            background-color: var(--primary-yellow);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            color: var(--black);
+        }
+
+        /* Testimonials */
+        .testimonial-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: var(--gray-dark);
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--black);
+        }
+
+        .stars {
+            color: var(--primary-yellow);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Cab Cards */
+        .cab-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .cab-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .cab-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .cab-card-content {
+            padding: 1.5rem;
+        }
+
+        .cab-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cab-features {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .feature-badge {
+            background-color: var(--light-yellow);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--black);
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
+        }
+
+        /* Pricing Table */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background-color: var(--white);
+            border: 2px solid var(--gray-medium);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--primary-yellow);
+            transform: scale(1.05);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card .price {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .pricing-card li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .pricing-card li::before {
+            content: "✓ ";
+            color: var(--primary-yellow);
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+
+        /* Tour Package Cards */
+        .tour-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .tour-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .tour-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .tour-card-content {
+            padding: 1.5rem;
+        }
+
+        .tour-badge {
+            background-color: var(--primary-yellow);
+            color: var(--black);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Form */
+        .contact-section {
+            background-color: var(--gray-light);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-form {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--black);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem;
+            border: 1px solid var(--gray-medium);
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-yellow);
+        }
+
+        .contact-info {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary-yellow);
+            min-width: 30px;
+        }
+
+        .contact-item h4 {
+            margin-bottom: 0.3rem;
+            color: var(--black);
+        }
+
+        .contact-item p {
+            color: var(--gray-dark);
+            margin: 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background-color: var(--primary-yellow);
+            color: var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background-color: var(--dark-yellow);
+            transform: scale(1.1);
+        }
+
+        .map-container {
+            margin-top: 2rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-yellow);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
             text-decoration: none;
             transition: color 0.3s ease;
         }
-        footer a:hover {
-            color: #ffffff;
+
+        .footer-section a:hover {
+            color: var(--primary-yellow);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-yellow);
+            color: var(--black);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            background-color: var(--dark-yellow);
+        }
+
+        .back-to-top.show {
+            display: flex;
         }
 
         /* Responsive Design */
-        @media (max-width: 1024px) {
-            nav {
-                padding: 1rem;
-            }
-            .nav-links {
-                gap: 1.5rem;
-            }
-        }
         @media (max-width: 768px) {
             nav {
-                flex-direction: column;
-                gap: 1rem;
+                padding: 1rem 5%;
             }
+
             .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0.75rem;
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--white);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0,0,0,0.05);
+                padding: 2rem 0;
+                gap: 0;
             }
-            .nav-links a {
-                font-size: 0.9rem;
+
+            .nav-links.active {
+                left: 0;
             }
-            #hero {
-                height: 50vh;
+
+            .nav-links li {
+                margin: 1rem 0;
             }
-            #hero h1 {
-                font-size: 2.5rem;
+
+            .hamburger {
+                display: flex;
             }
-            main {
-                padding: 0 1rem;
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .grid,
+            .grid-4,
+            .pricing-grid,
+            .contact-container,
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -324,237 +764,794 @@
 <body>
     <header>
         <nav>
-            <div class="logo">FastRide Cabs <i class="fas fa-taxi"></i></div>
-            <ul class="nav-links">
-                <li><a href="#home" data-page="home" class="active">Home</a></li>
-                <li><a href="#about" data-page="about">About Us</a></li>
-                <li><a href="#popular" data-page="popular">Popular Cab</a></li>
-                <li><a href="#rental" data-page="rental">Cab Rental</a></li>
-                <li><a href="#tour" data-page="tour">Tour Packages</a></li>
-                <li><a href="#contact" data-page="contact">Contact</a></li>
+            <div class="logo">
+                <span class="logo-icon">🚖</span>
+                FastRide Cabs
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" class="active" data-page="home">Home</a></li>
+                <li><a href="#" data-page="about">About Us</a></li>
+                <li><a href="#" data-page="popular">Popular Cab</a></li>
+                <li><a href="#" data-page="rental">Cab Rental Service</a></li>
+                <li><a href="#" data-page="tour">Tour Package</a></li>
+                <li><a href="#" data-page="contact">Contact</a></li>
             </ul>
         </nav>
     </header>
+
     <main>
+        <!-- Home Page -->
         <section id="home" class="active">
-            <div id="hero">
-                <div>
+            <div class="hero">
+                <div class="hero-content">
                     <h1>Your Ride, Our Priority</h1>
-                    <p>Experience comfort, safety, and 24/7 availability with FastRide Cabs. Download our app or book online in seconds!</p>
-                    <button class="btn">Book a Cab Now <i class="fas fa-arrow-right"></i></button>
-                </div>
-            </div>
-            
-            <h2>Why FastRide?</h2>
-            <div class="grid">
-                <div class="card">
-                    <i class="fas fa-shield-alt fa-2x" style="color: var(--primary-color); margin-bottom: 10px;"></i>
-                    <h3>Top Safety Standards</h3>
-                    <p>Our drivers are rigorously vetted, and all rides are GPS-tracked for your peace of mind.</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-clock fa-2x" style="color: var(--primary-color); margin-bottom: 10px;"></i>
-                    <h3>24/7 Availability</h3>
-                    <p>Day or night, rain or shine, our fleet is ready to get you where you need to be quickly.</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-dollar-sign fa-2x" style="color: var(--primary-color); margin-bottom: 10px;"></i>
-                    <h3>Affordable Rates</h3>
-                    <p>Transparent and competitive pricing with no hidden fees. Quality service doesn't have to break the bank.</p>
+                    <p>Experience comfort, safety, and 24/7 availability with FastRide Cabs. We prioritize your journey every single time.</p>
+                    <div class="hero-buttons">
+                        <button class="btn">Book a Cab Now</button>
+                        <button class="btn btn-outline">View Services</button>
+                    </div>
                 </div>
             </div>
 
-            <h2 style="margin-top: 3rem;">Customer Testimonials</h2>
-            <div class="grid">
-                <div class="card">
-                    <p><i class="fas fa-quote-left" style="color: var(--primary-color);"></i> Excellent service! The driver was punctual and the car was spotless. I highly recommend FastRide for airport transfers. <i class="fas fa-quote-right" style="color: var(--primary-color);"></i></p>
-                    <p style="font-weight: 600; text-align: right; margin-top: 1rem;">- John D., Business Traveler</p>
-                </div>
-                <div class="card">
-                    <p><i class="fas fa-quote-left" style="color: var(--primary-color);"></i> Affordable and comfortable rides every time. Their mini cab option is perfect for quick city commutes. Very impressed with the app interface. <i class="fas fa-quote-right" style="color: var(--primary-color);"></i></p>
-                    <p style="font-weight: 600; text-align: right; margin-top: 1rem;">- Sarah K., Local Commuter</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="about">
-            <h1>About FastRide Cabs</h1>
-            <p>FastRide Cabs was founded on the principle of providing **safe, reliable, and technology-driven** transportation. With over **10 years of experience**, we've grown from a small local service into a major provider, covering both bustling **urban centers and serene rural areas**.</p>
-            <p>Our commitment is simple: to make your journey as comfortable and stress-free as possible. We invest heavily in vehicle maintenance and continuous driver training to ensure top-tier service standards.</p>
-
-            <h2 style="margin-top: 3rem;">Meet Our Professional Team</h2>
-            <div class="grid">
-                <div class="card" style="border-top: 5px solid #00A388;">
-                    <img src="https://source.unsplash.com/featured/?professional taxi driver male" alt="Driver Photo" loading="lazy">
-                    <h3>Marcus Johnson</h3>
-                    <p>Head of Operations & Experienced Driver</p>
-                    <p style="font-size: 0.9rem;">15 years of incident-free driving. Dedicated to safety and efficiency.</p>
-                </div>
-                <div class="card" style="border-top: 5px solid #005A9C;">
-                    <img src="https://source.unsplash.com/featured/?professional taxi driver female" alt="Driver Photo" loading="lazy">
-                    <h3>Aisha Khan</h3>
-                    <p>Lead Customer Service Specialist</p>
-                    <p style="font-size: 0.9rem;">Ensures 24/7 support and resolves all customer inquiries promptly.</p>
+            <div class="section-padding container">
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">Choose from a wide range of taxi services tailored to your needs</p>
+                <div class="grid grid-4">
+                    <div class="feature-card">
+                        <div class="card-icon">🚗</div>
+                        <h3>City Rides</h3>
+                        <p>Quick and comfortable rides within the city at affordable rates</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="card-icon">🛣️</div>
+                        <h3>Outstation Trips</h3>
+                        <p>Long-distance travel made easy with our reliable outstation services</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="card-icon">✈️</div>
+                        <h3>Airport Transfer</h3>
+                        <p>Hassle-free pickup and drop services to and from the airport</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="card-icon">🏔️</div>
+                        <h3>Tour Packages</h3>
+                        <p>Explore beautiful destinations with our curated tour packages</p>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <section id="popular">
-            <h1>Our Popular Cab Models</h1>
-            <p>Choose the perfect vehicle for your journey. From quick commutes to group travel, we have a cab for every need.</p>
-            <div class="grid">
-                <div class="card">
-                    <img src="https://source.unsplash.com/featured/?modern sedan car" alt="Sedan Cab" loading="lazy">
-                    <h3>Sedan <i class="fas fa-car-side" style="color: var(--primary-color);"></i></h3>
-                    <p>Price: **$1.5/km** | Passengers: **4**</p>
-                    <p style="margin-top: 0.5rem;"><span style="font-weight: 600;">Features:</span> AC, Free Wi-Fi, Real-time GPS Tracking.</p>
-                    <button class="btn" style="margin-top: 1rem;">Book Now</button>
-                </div>
-                <div class="card">
-                    <img src="https://source.unsplash.com/featured/?suv family car" alt="SUV Cab" loading="lazy">
-                    <h3>SUV <i class="fas fa-bus-alt" style="color: var(--primary-color);"></i></h3>
-                    <p>Price: **$2/km** | Passengers: **6**</p>
-                    <p style="margin-top: 0.5rem;"><span style="font-weight: 600;">Features:</span> Spacious Interior, Extra Luggage Capacity, Child Seat Option.</p>
-                    <button class="btn" style="margin-top: 1rem;">Book Now</button>
-                </div>
-                <div class="card">
-                    <img src="https://source.unsplash.com/featured/?small compact car" alt="Mini Cab" loading="lazy">
-                    <h3>Mini <i class="fas fa-car" style="color: var(--primary-color);"></i></h3>
-                    <p>Price: **$1/km** | Passengers: **3**</p>
-                    <p style="margin-top: 0.5rem;"><span style="font-weight: 600;">Features:</span> Compact, Best for Traffic, Fuel-efficient & Eco-friendly.</p>
-                    <button class="btn" style="margin-top: 1rem;">Book Now</button>
+            <div class="stats">
+                <div class="container">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <h3>5000+</h3>
+                            <p>Happy Customers</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>10,000+</h3>
+                            <p>Trips Completed</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>10+</h3>
+                            <p>Years of Service</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>15+</h3>
+                            <p>Cities Covered</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <section id="rental">
-            <h1>Flexible Cab Rental Service</h1>
-            <p>Need a vehicle for an extended period? Our rental service offers competitive rates for business and personal long-term travel.</p>
-            <table style="width: 100%; border-collapse: collapse;">
-                <tr><th>Package</th><th>Price</th><th>Duration</th><th>Includes</th></tr>
-                <tr><td>Daily Commute</td><td>$50</td><td>1 Day / 150km</td><td>Basic Insurance, GPS</td></tr>
-                <tr><td>Weekly Explorer</td><td>$300</td><td>7 Days / 1000km</td><td>Roadside Assistance, Fuel Discount</td></tr>
-                <tr><td>Monthly Business</td><td>$1000</td><td>30 Days / Unlimited km</td><td>Premium Support, Dedicated Driver Option</td></tr>
-            </table>
-            <button class="btn">Book a Rental Package <i class="fas fa-calendar-alt"></i></button>
-        </section>
-
-        <section id="tour">
-            <h1>Curated Tour Packages</h1>
-            <p>Explore the region's best sights with our pre-planned, comfortable, and guided tour packages. Just sit back and enjoy the ride!</p>
-            <div class="grid">
-                <div class="card" style="border-top: 5px solid #FF5733;">
-                    <i class="fas fa-city fa-2x" style="color: #FF5733; margin-bottom: 10px;"></i>
-                    <h3>The Capital City Tour</h3>
-                    <p>Duration: **1 Full Day** | Price: **$100**</p>
-                    <p style="font-size: 0.9rem;">Includes: Major Landmarks Sightseeing, Local Expert Guide, Bottled Water.</p>
-                    <button class="btn" style="margin-top: 1rem;">Book This Tour</button>
-                </div>
-                <div class="card" style="border-top: 5px solid #33FF57;">
-                    <i class="fas fa-mountain fa-2x" style="color: #33FF57; margin-bottom: 10px;"></i>
-                    <h3>Weekend Hill Station Getaway</h3>
-                    <p>Duration: **2 Days/1 Night** | Price: **$200**</p>
-                    <p style="font-size: 0.9rem;">Includes: Transportation, 3-Star Accommodation, All Major Meals.</p>
-                    <button class="btn" style="margin-top: 1rem;">Book This Tour</button>
-                </div>
-                <div class="card" style="border-top: 5px solid #3357FF;">
-                    <i class="fas fa-church fa-2x" style="color: #3357FF; margin-bottom: 10px;"></i>
-                    <h3>Heritage & Temple Visit</h3>
-                    <p>Duration: **1 Day** | Price: **$80**</p>
-                    <p style="font-size: 0.9rem;">Includes: Entry Tickets, Private Transport, Insightful Driver Commentary.</p>
-                    <button class="btn" style="margin-top: 1rem;">Book This Tour</button>
+            <div class="section-padding container">
+                <h2 class="section-title">Why Choose FastRide?</h2>
+                <p class="section-subtitle">We provide the best taxi service experience in town</p>
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-icon">✅</div>
+                        <h3>Verified Drivers</h3>
+                        <p>All our drivers are professionally trained, verified, and background-checked for your safety</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🕒</div>
+                        <h3>24/7 Support</h3>
+                        <p>Round-the-clock customer support to assist you anytime, anywhere</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">💰</div>
+                        <h3>Affordable Pricing</h3>
+                        <p>Transparent and competitive rates with no hidden charges</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🚘</div>
+                        <h3>Clean Vehicles</h3>
+                        <p>Well-maintained, clean, and comfortable cars for a pleasant journey</p>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <section id="contact">
-            <h1>Get in Touch & Book Your Ride</h1>
-            <p>Our customer service team is available 24/7 to assist you with bookings, inquiries, and support.</p>
-            <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
-                <form id="contactForm" style="flex: 1 1 400px; min-width: 300px;">
-                    <h3 style="margin-top: 0;">Quick Booking Inquiry</h3>
-                    <input type="text" placeholder="Your Full Name" required>
-                    <input type="tel" placeholder="Phone Number (e.g., +1-234-567-890)" required>
-                    <input type="email" placeholder="Email Address" required>
-                    <input type="text" placeholder="Required Pickup Location" required>
-                    <textarea placeholder="Your Message / Booking Details" rows="5" required></textarea>
-                    <button type="submit" class="btn">Send Request <i class="fas fa-paper-plane"></i></button>
-                </form>
-                <div style="flex: 1 1 400px;">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1533088.397018317!2d-106.84061840000001!3d33.68266445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87220087130932c5%3A0x64af073b64c8d57d!2sNew%20Mexico%2C%20USA!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
-                    <div style="margin-top: 1.5rem; background-color: #f9f9f9; padding: 1rem; border-radius: 8px;">
-                        <p><i class="fas fa-phone-alt" style="color: var(--primary-color);"></i> **Phone:** +1-234-567-890</p>
-                        <p><i class="fas fa-envelope" style="color: var(--primary-color);"></i> **Email:** info@fastride.com</p>
-                        <p><i class="fas fa-map-marker-alt" style="color: var(--primary-color);"></i> **Address:** 123 Main St, City, State, Country</p>
+            <div class="section-padding container" style="background-color: var(--gray-light); padding: 5rem 0;">
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-subtitle">Read testimonials from our satisfied riders</p>
+                <div class="grid">
+                    <div class="testimonial-card">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p>"Excellent service! The driver was punctual, professional, and the car was spotless. Highly recommend FastRide!"</p>
+                        <p class="testimonial-author">- John Davis</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p>"Best taxi service I've used. Affordable rates and very comfortable rides. Will definitely use again!"</p>
+                        <p class="testimonial-author">- Sarah Kumar</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p>"Safe, reliable, and always on time. FastRide has never disappointed me. Their service is top-notch!"</p>
+                        <p class="testimonial-author">- Michael Chen</p>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- About Us Page -->
+        <section id="about">
+            <div class="hero" style="height: 50vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1600') center/cover;">
+                <div class="hero-content">
+                    <h1>About FastRide Cabs</h1>
+                    <p>Your Trusted Travel Partner Since 2015</p>
+                </div>
+            </div>
+
+            <div class="section-padding container">
+                <h2 class="section-title">Our Story</h2>
+                <p class="section-subtitle">Delivering excellence in transportation for over a decade</p>
+                <p style="text-align: center; max-width: 900px; margin: 0 auto 3rem; font-size: 1.1rem; line-height: 1.8;">
+                    FastRide Cabs was founded with a simple mission: to provide safe, reliable, and affordable taxi services to everyone. With over 10 years of experience in the transportation industry, we have successfully completed thousands of trips and built a reputation for excellence. We operate across 15+ cities, covering both urban and rural areas, ensuring that quality transportation is accessible to all.
+                </p>
+                <p style="text-align: center; max-width: 900px; margin: 0 auto; font-size: 1.1rem; line-height: 1.8;">
+                    Our fleet consists of well-maintained vehicles equipped with modern amenities, and our drivers are trained professionals committed to providing the best service. Whether you need a quick city ride or a long outstation journey, FastRide is here to serve you 24/7.
+                </p>
+            </div>
+
+            <div class="section-padding" style="background-color: var(--gray-light);">
+                <div class="container">
+                    <h2 class="section-title">Why Choose Us?</h2>
+                    <div class="grid">
+                        <div class="card">
+                            <div class="card-icon">💼</div>
+                            <h3>Experienced Team</h3>
+                            <p>10+ years in the transportation industry with thousands of satisfied customers</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">🚗</div>
+                            <h3>Modern Fleet</h3>
+                            <p>Well-maintained vehicles with GPS tracking, AC, and safety features</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">💰</div>
+                            <h3>Affordable Rates</h3>
+                            <p>Competitive pricing with no hidden charges and transparent billing</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">🛡️</div>
+                            <h3>Safe & Secure</h3>
+                            <p>Top safety standards with verified drivers and 24/7 customer support</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">🌍</div>
+                            <h3>Wide Coverage</h3>
+                            <p>Serving 15+ cities with both city rides and outstation services</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">⚡</div>
+                            <h3>Quick Booking</h3>
+                            <p>Easy online booking system for instant cab reservations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-padding container">
+                <h2 class="section-title">Meet Our Professional Drivers</h2>
+                <p class="section-subtitle">Experienced, trained, and committed to your safety</p>
+                <div class="grid grid-4">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" alt="Driver Rajesh Kumar">
+                        <h3>Rajesh Kumar</h3>
+                        <p><strong>Experience:</strong> 12 years</p>
+                        <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (4.9/5)</p>
+                        <p>Specializes in city and outstation rides</p>
+                    </div>
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400" alt="Driver Amit Sharma">
+                        <h3>Amit Sharma</h3>
+                        <p><strong>Experience:</strong> 8 years</p>
+                        <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (4.8/5)</p>
+                        <p>Expert in airport transfers and tours</p>
+                    </div>
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400" alt="Driver Priya Singh">
+                        <h3>Priya Singh</h3>
+                        <p><strong>Experience:</strong> 6 years</p>
+                        <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (5.0/5)</p>
+                        <p>Safe and comfortable city rides</p>
+                    </div>
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400" alt="Driver Mohammed Ali">
+                        <h3>Mohammed Ali</h3>
+                        <p><strong>Experience:</strong> 10 years</p>
+                        <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (4.9/5)</p>
+                        <p>Long-distance travel specialist</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popular Cab Page -->
+        <section id="popular">
+            <div class="hero" style="height: 50vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=1600') center/cover;">
+                <div class="hero-content">
+                    <h1>Choose Your Ride</h1>
+                    <p>Find the perfect cab for your journey</p>
+                </div>
+            </div>
+
+            <div class="section-padding container">
+                <h2 class="section-title">Popular Cab Models</h2>
+                <p class="section-subtitle">Select from our range of comfortable and well-maintained vehicles</p>
+
+                <div class="grid">
+                    <div class="cab-card">
+                        <img src="https://images.unsplash.com/photo-1583267746897-c057ecbdb828?w=600" alt="Mini Hatchback">
+                        <div class="cab-card-content">
+                            <h3>Mini / Hatchback</h3>
+                            <div class="cab-features">
+                                <span class="feature-badge">4 Seats</span>
+                                <span class="feature-badge">AC</span>
+                                <span class="feature-badge">2 Luggage</span>
+                            </div>
+                            <p>Ideal for solo travelers or couples. Fuel-efficient and perfect for city rides.</p>
+                            <div class="price">₹10/km</div>
+                            <button class="btn">Book Now</button>
+                        </div>
+                    </div>
+
+                    <div class="cab-card">
+                        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600" alt="Sedan">
+                        <div class="cab-card-content">
+                            <h3>Sedan</h3>
+                            <div class="cab-features">
+                                <span class="feature-badge">4 Seats</span>
+                                <span class="feature-badge">AC</span>
+                                <span class="feature-badge">3 Luggage</span>
+                                <span class="feature-badge">GPS</span>
+                            </div>
+                            <p>Comfortable family rides with spacious interiors and smooth performance.</p>
+                            <div class="price">₹12/km</div>
+                            <button class="btn">Book Now</button>
+                        </div>
+                    </div>
+
+                    <div class="cab-card">
+                        <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600" alt="SUV">
+                        <div class="cab-card-content">
+                            <h3>SUV</h3>
+                            <div class="cab-features">
+                                <span class="feature-badge">6-7 Seats</span>
+                                <span class="feature-badge">AC</span>
+                                <span class="feature-badge">5 Luggage</span>
+                                <span class="feature-badge">GPS</span>
+                            </div>
+                            <p>Spacious and comfortable for group travel and outstation trips.</p>
+                            <div class="price">₹18/km</div>
+                            <button class="btn">Book Now</button>
+                        </div>
+                    </div>
+
+                    <div class="cab-card">
+                        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600" alt="Luxury Sedan">
+                        <div class="cab-card-content">
+                            <h3>Luxury Sedan</h3>
+                            <div class="cab-features">
+                                <span class="feature-badge">4 Seats</span>
+                                <span class="feature-badge">Premium AC</span>
+                                <span class="feature-badge">3 Luggage</span>
+                                <span class="feature-badge">Music System</span>
+                            </div>
+                            <p>Premium experience with high-end vehicles and extra comfort.</p>
+                            <div class="price">₹25/km</div>
+                            <button class="btn">Book Now</button>
+                        </div>
+                    </div>
+
+                    <div class="cab-card">
+                        <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=600" alt="Premium SUV">
+                        <div class="cab-card-content">
+                            <h3>Premium SUV</h3>
+                            <div class="cab-features">
+                                <span class="feature-badge">6-7 Seats</span>
+                                <span class="feature-badge">Premium AC</span>
+                                <span class="feature-badge">5 Luggage</span>
+                                <span class="feature-badge">All Features</span>
+                            </div>
+                            <p>Ultimate luxury for group travel with top-of-the-line amenities.</p>
+                            <div class="price">₹30/km</div>
+                            <button class="btn">Book Now</button>
+                        </div>
+                    </div>
+
+                    <div class="cab-card">
+                        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600" alt="Tempo Traveller">
+                        <div class="cab-card-content">
+                            <h3>Tempo Traveller</h3>
+                            <div class="cab-features">
+                                <span class="feature-badge">12-14 Seats</span>
+                                <span class="feature-badge">AC</span>
+                                <span class="feature-badge">Large Luggage</span>
+                                <span class="feature-badge">GPS</span>
+                            </div>
+                            <p>Perfect for large groups, family trips, and corporate travel.</p>
+                            <div class="price">₹35/km</div>
+                            <button class="btn">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cab Rental Service Page -->
+        <section id="rental">
+            <div class="hero" style="height: 50vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1485291571150-772bcfc10da5?w=1600') center/cover;">
+                <div class="hero-content">
+                    <h1>Flexible Rental Plans</h1>
+                    <p>Choose from hourly, daily, weekly, or monthly packages</p>
+                </div>
+            </div>
+
+            <div class="section-padding container">
+                <h2 class="section-title">Cab Rental Packages</h2>
+                <p class="section-subtitle">Affordable rental options for short and long-term use</p>
+
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>Hourly Rental</h3>
+                        <div class="price">₹1,200</div>
+                        <p><strong>4 Hours / 40 KM</strong></p>
+                        <ul>
+                            <li>Driver allowance included</li>
+                            <li>Fuel charges extra</li>
+                            <li>AC vehicle</li>
+                            <li>GPS tracking</li>
+                            <li>Extra km: ₹12/km</li>
+                        </ul>
+                        <button class="btn">Book Now</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h3>Extended Hourly</h3>
+                        <div class="price">₹2,400</div>
+                        <p><strong>8 Hours / 80 KM</strong></p>
+                        <ul>
+                            <li>Driver allowance included</li>
+                            <li>Fuel charges extra</li>
+                            <li>AC vehicle</li>
+                            <li>GPS tracking</li>
+                            <li>Extra km: ₹12/km</li>
+                        </ul>
+                        <button class="btn">Book Now</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h3>Daily Rental</h3>
+                        <div class="price">₹3,500</div>
+                        <p><strong>1 Day / 250 KM</strong></p>
+                        <ul>
+                            <li>Driver allowance included</li>
+                            <li>Fuel charges extra</li>
+                            <li>24-hour service</li>
+                            <li>Night charges applicable</li>
+                            <li>Extra km: ₹12/km</li>
+                        </ul>
+                        <button class="btn">Book Now</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h3>Weekly Rental</h3>
+                        <div class="price">₹22,000</div>
+                        <p><strong>7 Days / 1,750 KM</strong></p>
+                        <ul>
+                            <li>Driver allowance included</li>
+                            <li>Fuel charges extra</li>
+                            <li>Flexible usage</li>
+                            <li>Priority support</li>
+                            <li>Extra km: ₹11/km</li>
+                        </ul>
+                        <button class="btn">Book Now</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h3>Monthly Rental</h3>
+                        <div class="price">₹80,000</div>
+                        <p><strong>30 Days / 7,500 KM</strong></p>
+                        <ul>
+                            <li>All-inclusive package</li>
+                            <li>Fuel charges extra</li>
+                            <li>Dedicated driver</li>
+                            <li>Priority support</li>
+                            <li>Extra km: ₹10/km</li>
+                        </ul>
+                        <button class="btn">Book Now</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h3>Custom Package</h3>
+                        <div class="price">Contact Us</div>
+                        <p><strong>Tailored to Your Needs</strong></p>
+                        <ul>
+                            <li>Customizable duration</li>
+                            <li>Flexible kilometers</li>
+                            <li>Special requirements</li>
+                            <li>Corporate packages</li>
+                            <li>Negotiable rates</li>
+                        </ul>
+                        <button class="btn">Enquire Now</button>
+                    </div>
+                </div>
+
+                <div style="margin-top: 4rem; background-color: var(--light-yellow); padding: 2rem; border-radius: 15px;">
+                    <h3 style="margin-bottom: 1rem;">Terms & Conditions</h3>
+                    <ul style="line-height: 2; color: var(--black);">
+                        <li>Fuel charges, toll, and parking fees are extra</li>
+                        <li>Night charges apply between 11 PM - 5 AM (₹200/night)</li>
+                        <li>Driver allowance is included in the package</li>
+                        <li>Cancellation charges: 50% if canceled within 24 hours of booking</li>
+                        <li>All vehicles are sanitized and well-maintained</li>
+                        <li>GST applicable as per government regulations</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tour Package Page -->
+        <section id="tour">
+            <div class="hero" style="height: 50vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600') center/cover;">
+                <div class="hero-content">
+                    <h1>Explore with FastRide</h1>
+                    <p>Curated tour packages for memorable journeys</p>
+                </div>
+            </div>
+
+            <div class="section-padding container">
+                <h2 class="section-title">Popular Tour Packages</h2>
+                <p class="section-subtitle">Discover beautiful destinations with our all-inclusive tour packages</p>
+
+                <div class="grid">
+                    <div class="tour-card">
+                        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600" alt="Goa Beach Tour">
+                        <div class="tour-card-content">
+                            <span class="tour-badge">Beach Destination</span>
+                            <h3>Goa Beach Tour</h3>
+                            <p><strong>Duration:</strong> 3 Days / 2 Nights</p>
+                            <p><strong>Distance:</strong> ~600 km</p>
+                            <p><strong>Price:</strong> <span style="color: var(--primary-yellow); font-size: 1.5rem; font-weight: 700;">₹15,000</span></p>
+                            <p><strong>Inclusions:</strong> Transport, Driver allowance, Toll charges</p>
+                            <p><strong>Exclusions:</strong> Hotel accommodation, Meals</p>
+                            <button class="btn">Book This Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="tour-card">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600" alt="Shimla Hills">
+                        <div class="tour-card-content">
+                            <span class="tour-badge">Hill Station</span>
+                            <h3>Shimla Hills Escape</h3>
+                            <p><strong>Duration:</strong> 4 Days / 3 Nights</p>
+                            <p><strong>Distance:</strong> ~800 km</p>
+                            <p><strong>Price:</strong> <span style="color: var(--primary-yellow); font-size: 1.5rem; font-weight: 700;">₹22,000</span></p>
+                            <p><strong>Inclusions:</strong> Transport, Driver allowance, Toll charges</p>
+                            <p><strong>Exclusions:</strong> Hotel accommodation, Meals</p>
+                            <button class="btn">Book This Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="tour-card">
+                        <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=600" alt="Jaipur City Tour">
+                        <div class="tour-card-content">
+                            <span class="tour-badge">City Sightseeing</span>
+                            <h3>Jaipur City Tour</h3>
+                            <p><strong>Duration:</strong> 2 Days / 1 Night</p>
+                            <p><strong>Distance:</strong> ~500 km</p>
+                            <p><strong>Price:</strong> <span style="color: var(--primary-yellow); font-size: 1.5rem; font-weight: 700;">₹12,000</span></p>
+                            <p><strong>Inclusions:</strong> Transport, Driver allowance, Toll charges, Local guide</p>
+                            <p><strong>Exclusions:</strong> Hotel accommodation, Meals, Entry fees</p>
+                            <button class="btn">Book This Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="tour-card">
+                        <img src="https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=600" alt="Varanasi Temple">
+                        <div class="tour-card-content">
+                            <span class="tour-badge">Religious Tour</span>
+                            <h3>Varanasi Temple Visit</h3>
+                            <p><strong>Duration:</strong> 3 Days / 2 Nights</p>
+                            <p><strong>Distance:</strong> ~700 km</p>
+                            <p><strong>Price:</strong> <span style="color: var(--primary-yellow); font-size: 1.5rem; font-weight: 700;">₹18,000</span></p>
+                            <p><strong>Inclusions:</strong> Transport, Driver allowance, Toll charges, Boat ride</p>
+                            <p><strong>Exclusions:</strong> Hotel accommodation, Meals</p>
+                            <button class="btn">Book This Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="tour-card">
+                        <img src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=600" alt="Manali Adventure">
+                        <div class="tour-card-content">
+                            <span class="tour-badge">Adventure Trip</span>
+                            <h3>Manali Adventure Tour</h3>
+                            <p><strong>Duration:</strong> 5 Days / 4 Nights</p>
+                            <p><strong>Distance:</strong> ~1000 km</p>
+                            <p><strong>Price:</strong> <span style="color: var(--primary-yellow); font-size: 1.5rem; font-weight: 700;">₹28,000</span></p>
+                            <p><strong>Inclusions:</strong> Transport, Driver allowance, Toll charges</p>
+                            <p><strong>Exclusions:</strong> Hotel accommodation, Meals, Adventure activities</p>
+                            <button class="btn">Book This Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="tour-card">
+                        <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600" alt="Kerala Backwaters">
+                        <div class="tour-card-content">
+                            <span class="tour-badge">Nature Tour</span>
+                            <h3>Kerala Backwaters</h3>
+                            <p><strong>Duration:</strong> 4 Days / 3 Nights</p>
+                            <p><strong>Distance:</strong> ~900 km</p>
+                            <p><strong>Price:</strong> <span style="color: var(--primary-yellow); font-size: 1.5rem; font-weight: 700;">₹25,000</span></p>
+                            <p><strong>Inclusions:</strong> Transport, Driver allowance, Toll charges, Houseboat ride</p>
+                            <p><strong>Exclusions:</strong> Hotel accommodation, Meals</p>
+                            <button class="btn">Book This Tour</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 4rem; background-color: var(--white); padding: 2.5rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                    <h3 style="margin-bottom: 1.5rem; text-align: center;">Request a Custom Tour Package</h3>
+                    <form style="max-width: 700px; margin: 0 auto;">
+                        <div class="form-group">
+                            <label>Destination</label>
+                            <input type="text" placeholder="Where would you like to go?" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Duration (Days)</label>
+                            <input type="number" placeholder="Number of days" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Number of Passengers</label>
+                            <input type="number" placeholder="How many people?" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Special Requirements</label>
+                            <textarea rows="4" placeholder="Any specific requirements or preferences?"></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Submit Request</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section id="contact" class="contact-section">
+            <div class="section-padding container">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">We're here to help 24/7. Reach out to us anytime!</p>
+
+                <div class="contact-container">
+                    <div class="contact-form">
+                        <h3 style="margin-bottom: 1.5rem;">Send Us a Message</h3>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label>Full Name *</label>
+                                <input type="text" placeholder="Enter your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number *</label>
+                                <input type="tel" placeholder="Enter your phone number" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" placeholder="Enter your email">
+                            </div>
+                            <div class="form-group">
+                                <label>Pickup Location *</label>
+                                <input type="text" placeholder="Enter pickup location" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Drop Location</label>
+                                <input type="text" placeholder="Enter drop location">
+                            </div>
+                            <div class="form-group">
+                                <label>Message / Special Requirements</label>
+                                <textarea rows="5" placeholder="Tell us about your requirements"></textarea>
+                            </div>
+                            <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                        </form>
+                    </div>
+
+                    <div class="contact-info">
+                        <h3 style="margin-bottom: 1.5rem;">Contact Information</h3>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+91-9876543210</p>
+                                <p>+91-9876543211 (24/7 Support)</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>info@fastridecabs.com</p>
+                                <p>support@fastridecabs.com</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <h4>Office Address</h4>
+                                <p>123 Main Street, Sector 15</p>
+                                <p>New Delhi - 110001, India</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">🕒</div>
+                            <div>
+                                <h4>Working Hours</h4>
+                                <p>24/7 Available</p>
+                                <p>Office: Mon-Sat, 9 AM - 6 PM</p>
+                            </div>
+                        </div>
+
+                        <h4 style="margin-top: 2rem; margin-bottom: 1rem;">Connect With Us</h4>
+                        <div class="social-links">
+                            <a href="#" title="Instagram">📷</a>
+                            <a href="#" title="WhatsApp">💬</a>
+                            <a href="#" title="Facebook">📘</a>
+                            <a href="#" title="Twitter">🐦</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.0605945063866!2d77.20689931508048!3d28.627981082419595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x52c2b7494e204dce!2sConnaught%20Place%2C%20New%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
     </main>
+
     <footer>
-        <p>&copy; 2025 FastRide Cabs. All rights reserved. | Designed for Speed & Safety</p>
-        <div>
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About FastRide</h3>
+                    <p>Your trusted taxi service provider for over 10 years. Safe, reliable, and affordable rides 24/7.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#" data-page="home">Home</a></li>
+                        <li><a href="#" data-page="about">About Us</a></li>
+                        <li><a href="#" data-page="popular">Popular Cab</a></li>
+                        <li><a href="#" data-page="rental">Rental Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">City Rides</a></li>
+                        <li><a href="#">Outstation Trips</a></li>
+                        <li><a href="#">Airport Transfer</a></li>
+                        <li><a href="#">Tour Packages</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>📞 +91-9876543210</p>
+                    <p>📧 info@fastridecabs.com</p>
+                    <p>📍 New Delhi, India</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 FastRide Cabs. All rights reserved. | Designed with ❤️ for better rides</p>
+            </div>
         </div>
     </footer>
+
+    <button class="back-to-top" id="backToTop">↑</button>
+
     <script>
+        // Navigation & Page Switching
         document.addEventListener('DOMContentLoaded', () => {
             const navLinks = document.querySelectorAll('.nav-links a');
-            const sections = document.querySelectorAll('main section');
-            const main = document.querySelector('main');
+            const sections = document.querySelectorAll('section');
+            const hamburger = document.getElementById('hamburger');
+            const navLinksContainer = document.getElementById('navLinks');
+            const backToTop = document.getElementById('backToTop');
 
-            // Find the active section based on URL hash or default to 'home'
-            const initialPage = window.location.hash.substring(1) || 'home';
-            
-            function setActiveSection(pageId) {
-                // Remove active class from all links and sections
-                navLinks.forEach(l => l.classList.remove('active'));
-                sections.forEach(s => s.classList.remove('active'));
-
-                // Add active class to corresponding link and section
-                const targetSection = document.getElementById(pageId);
-                const targetLink = document.querySelector(`.nav-links a[data-page="${pageId}"]`);
-
-                if (targetSection && targetLink) {
-                    targetLink.classList.add('active');
-                    targetSection.classList.add('active');
-                    // Scroll to the section if not already on the page load
-                    // Use main scroll to avoid issues with different viewports
-                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); 
-                }
-            }
-
-            // Initial call to set the active section on load
-            setActiveSection(initialPage);
-            
+            // Page navigation
             navLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     const page = link.getAttribute('data-page');
-                    // Update URL hash for better navigation and bookmarking
-                    window.history.pushState(null, null, `#${page}`);
-                    setActiveSection(page);
+
+                    // Remove active class from all links and sections
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    sections.forEach(s => s.classList.remove('active'));
+
+                    // Add active class to clicked link and corresponding section
+                    link.classList.add('active');
+                    const targetSection = document.getElementById(page);
+                    if (targetSection) {
+                        targetSection.classList.add('active');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+
+                    // Close mobile menu
+                    navLinksContainer.classList.remove('active');
                 });
             });
 
-            // Handle back/forward browser buttons
-            window.addEventListener('hashchange', () => {
-                const newPage = window.location.hash.substring(1) || 'home';
-                setActiveSection(newPage);
+            // Hamburger menu toggle
+            hamburger.addEventListener('click', () => {
+                navLinksContainer.classList.toggle('active');
             });
 
-            // Form submission
-            const form = document.getElementById('contactForm');
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('Thank you for contacting FastRide Cabs! We have received your request and will be in touch shortly.');
-                form.reset();
+            // Contact form submission
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert('Thank you for contacting FastRide Cabs! We will get back to you shortly.');
+                    contactForm.reset();
+                });
+            }
+
+            // Back to top button
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            });
+
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // All booking buttons
+            const bookingButtons = document.querySelectorAll('.btn');
+            bookingButtons.forEach(btn => {
+                if (btn.textContent.includes('Book') || btn.textContent.includes('Enquire')) {
+                    btn.addEventListener('click', () => {
+                        // Navigate to contact page
+                        navLinks.forEach(l => l.classList.remove('active'));
+                        sections.forEach(s => s.classList.remove('active'));
+                        
+                        const contactLink = document.querySelector('[data-page="contact"]');
+                        contactLink.classList.add('active');
+                        document.getElementById('contact').classList.add('active');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    });
+                }
             });
         });
     </script>
 </body>
-
 </html>
