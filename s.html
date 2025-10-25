@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FastRide Cabs - Your reliable taxi service for comfort, safety, and 24/7 availability. Book your ride today!">
+    <title>FastRide Cabs - Fast, Safe, Reliable</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        /* Define Primary Color Palette */
+        :root {
+            --primary-color: #FFC300; /* A vibrant Yellow/Gold */
+            --secondary-color: #000000;
+            --background-light: #f4f4f4;
+            --text-dark: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            color: var(--text-dark);
+            line-height: 1.7;
+            scroll-behavior: smooth;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--secondary-color);
+            text-transform: uppercase;
+        }
+        .logo i {
+            color: var(--primary-color);
+            margin-right: 5px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+            padding-bottom: 5px;
+            position: relative;
+        }
+
+        .nav-links a:hover, .nav-links .active {
+            color: var(--primary-color);
+        }
+
+        /* Active Link Indicator with Animation */
+        .nav-links .active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+            animation: expand 0.3s ease-out;
+        }
+        @keyframes expand {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        main {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+            padding-top: 2rem; /* Spacing for sticky header */
+            display: none; /* Hidden by default for single-page nav */
+            animation: fadeInSection 0.6s ease-out;
+        }
+        section.active {
+            display: block;
+        }
+
+        @keyframes fadeInSection {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; border-bottom: 2px solid var(--primary-color); padding-bottom: 0.5rem; display: inline-block;}
+        h3 { font-size: 1.4rem; }
+
+        /* Buttons */
+        .btn {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 0.85rem 2rem;
+            border: none;
+            border-radius: 50px; /* Pill shape */
+            cursor: pointer;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(255, 195, 0, 0.4);
+        }
+
+        .btn:hover {
+            background-color: #e6b100;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 195, 0, 0.6);
+        }
+        
+        /* Hero Section Styling */
+        #hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://source.unsplash.com/featured/?yellow taxi,city night') no-repeat center center/cover;
+            height: 75vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            animation: slideIn 1s ease-out;
+        }
+        #hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        #hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 1rem auto 2rem;
+        }
+
+        /* Cards and Grid */
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Rental Table Styling */
+        #rental table {
+            border: 2px solid var(--primary-color);
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        #rental th, #rental td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        #rental th {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        #rental tr:nth-child(even) {
+            background-color: var(--background-light);
+        }
+        #rental tr:hover {
+            background-color: #ffeaa7; /* Light hover effect */
+        }
+        #rental .btn {
+            margin-top: 1.5rem;
+        }
+
+        /* Forms */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 2rem 0;
+            padding: 2rem;
+            background-color: var(--background-light);
+            border-radius: 10px;
+        }
+
+        input, textarea {
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        input:focus, textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px rgba(255, 195, 0, 0.5);
+            outline: none;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 350px;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: #ffffff;
+            text-align: center;
+            padding: 2.5rem 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            margin: 0 1rem;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: #ffffff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 1rem;
+            }
+            .nav-links {
+                gap: 1.5rem;
+            }
+        }
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.75rem;
+            }
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+            #hero {
+                height: 50vh;
+            }
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+            main {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">FastRide Cabs <i class="fas fa-taxi"></i></div>
+            <ul class="nav-links">
+                <li><a href="#home" data-page="home" class="active">Home</a></li>
+                <li><a href="#about" data-page="about">About Us</a></li>
+                <li><a href="#popular" data-page="popular">Popular Cab</a></li>
+                <li><a href="#rental" data-page="rental">Cab Rental</a></li>
+                <li><a href="#tour" data-page="tour">Tour Packages</a></li>
+                <li><a href="#contact" data-page="contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home" class="active">
+            <div id="hero">
+                <div>
+                    <h1>Your Ride, Our Priority</h1>
+                    <p>Experience comfort, safety, and 24/7 availability with FastRide Cabs. Download our app or book online in seconds!</p>
+                    <button class="btn">Book a Cab Now <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            
+            <h2>Why FastRide?</h2>
+            <div class="grid">
+                <div class="card">
+                    <i class="fas fa-shield-alt fa-2x" style="color: var(--primary-color); margin-bottom: 10px;"></i>
+                    <h3>Top Safety Standards</h3>
+                    <p>Our drivers are rigorously vetted, and all rides are GPS-tracked for your peace of mind.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-clock fa-2x" style="color: var(--primary-color); margin-bottom: 10px;"></i>
+                    <h3>24/7 Availability</h3>
+                    <p>Day or night, rain or shine, our fleet is ready to get you where you need to be quickly.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-dollar-sign fa-2x" style="color: var(--primary-color); margin-bottom: 10px;"></i>
+                    <h3>Affordable Rates</h3>
+                    <p>Transparent and competitive pricing with no hidden fees. Quality service doesn't have to break the bank.</p>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 3rem;">Customer Testimonials</h2>
+            <div class="grid">
+                <div class="card">
+                    <p><i class="fas fa-quote-left" style="color: var(--primary-color);"></i> Excellent service! The driver was punctual and the car was spotless. I highly recommend FastRide for airport transfers. <i class="fas fa-quote-right" style="color: var(--primary-color);"></i></p>
+                    <p style="font-weight: 600; text-align: right; margin-top: 1rem;">- John D., Business Traveler</p>
+                </div>
+                <div class="card">
+                    <p><i class="fas fa-quote-left" style="color: var(--primary-color);"></i> Affordable and comfortable rides every time. Their mini cab option is perfect for quick city commutes. Very impressed with the app interface. <i class="fas fa-quote-right" style="color: var(--primary-color);"></i></p>
+                    <p style="font-weight: 600; text-align: right; margin-top: 1rem;">- Sarah K., Local Commuter</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <h1>About FastRide Cabs</h1>
+            <p>FastRide Cabs was founded on the principle of providing **safe, reliable, and technology-driven** transportation. With over **10 years of experience**, we've grown from a small local service into a major provider, covering both bustling **urban centers and serene rural areas**.</p>
+            <p>Our commitment is simple: to make your journey as comfortable and stress-free as possible. We invest heavily in vehicle maintenance and continuous driver training to ensure top-tier service standards.</p>
+
+            <h2 style="margin-top: 3rem;">Meet Our Professional Team</h2>
+            <div class="grid">
+                <div class="card" style="border-top: 5px solid #00A388;">
+                    <img src="https://source.unsplash.com/featured/?professional taxi driver male" alt="Driver Photo" loading="lazy">
+                    <h3>Marcus Johnson</h3>
+                    <p>Head of Operations & Experienced Driver</p>
+                    <p style="font-size: 0.9rem;">15 years of incident-free driving. Dedicated to safety and efficiency.</p>
+                </div>
+                <div class="card" style="border-top: 5px solid #005A9C;">
+                    <img src="https://source.unsplash.com/featured/?professional taxi driver female" alt="Driver Photo" loading="lazy">
+                    <h3>Aisha Khan</h3>
+                    <p>Lead Customer Service Specialist</p>
+                    <p style="font-size: 0.9rem;">Ensures 24/7 support and resolves all customer inquiries promptly.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="popular">
+            <h1>Our Popular Cab Models</h1>
+            <p>Choose the perfect vehicle for your journey. From quick commutes to group travel, we have a cab for every need.</p>
+            <div class="grid">
+                <div class="card">
+                    <img src="https://source.unsplash.com/featured/?modern sedan car" alt="Sedan Cab" loading="lazy">
+                    <h3>Sedan <i class="fas fa-car-side" style="color: var(--primary-color);"></i></h3>
+                    <p>Price: **$1.5/km** | Passengers: **4**</p>
+                    <p style="margin-top: 0.5rem;"><span style="font-weight: 600;">Features:</span> AC, Free Wi-Fi, Real-time GPS Tracking.</p>
+                    <button class="btn" style="margin-top: 1rem;">Book Now</button>
+                </div>
+                <div class="card">
+                    <img src="https://source.unsplash.com/featured/?suv family car" alt="SUV Cab" loading="lazy">
+                    <h3>SUV <i class="fas fa-bus-alt" style="color: var(--primary-color);"></i></h3>
+                    <p>Price: **$2/km** | Passengers: **6**</p>
+                    <p style="margin-top: 0.5rem;"><span style="font-weight: 600;">Features:</span> Spacious Interior, Extra Luggage Capacity, Child Seat Option.</p>
+                    <button class="btn" style="margin-top: 1rem;">Book Now</button>
+                </div>
+                <div class="card">
+                    <img src="https://source.unsplash.com/featured/?small compact car" alt="Mini Cab" loading="lazy">
+                    <h3>Mini <i class="fas fa-car" style="color: var(--primary-color);"></i></h3>
+                    <p>Price: **$1/km** | Passengers: **3**</p>
+                    <p style="margin-top: 0.5rem;"><span style="font-weight: 600;">Features:</span> Compact, Best for Traffic, Fuel-efficient & Eco-friendly.</p>
+                    <button class="btn" style="margin-top: 1rem;">Book Now</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="rental">
+            <h1>Flexible Cab Rental Service</h1>
+            <p>Need a vehicle for an extended period? Our rental service offers competitive rates for business and personal long-term travel.</p>
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr><th>Package</th><th>Price</th><th>Duration</th><th>Includes</th></tr>
+                <tr><td>Daily Commute</td><td>$50</td><td>1 Day / 150km</td><td>Basic Insurance, GPS</td></tr>
+                <tr><td>Weekly Explorer</td><td>$300</td><td>7 Days / 1000km</td><td>Roadside Assistance, Fuel Discount</td></tr>
+                <tr><td>Monthly Business</td><td>$1000</td><td>30 Days / Unlimited km</td><td>Premium Support, Dedicated Driver Option</td></tr>
+            </table>
+            <button class="btn">Book a Rental Package <i class="fas fa-calendar-alt"></i></button>
+        </section>
+
+        <section id="tour">
+            <h1>Curated Tour Packages</h1>
+            <p>Explore the region's best sights with our pre-planned, comfortable, and guided tour packages. Just sit back and enjoy the ride!</p>
+            <div class="grid">
+                <div class="card" style="border-top: 5px solid #FF5733;">
+                    <i class="fas fa-city fa-2x" style="color: #FF5733; margin-bottom: 10px;"></i>
+                    <h3>The Capital City Tour</h3>
+                    <p>Duration: **1 Full Day** | Price: **$100**</p>
+                    <p style="font-size: 0.9rem;">Includes: Major Landmarks Sightseeing, Local Expert Guide, Bottled Water.</p>
+                    <button class="btn" style="margin-top: 1rem;">Book This Tour</button>
+                </div>
+                <div class="card" style="border-top: 5px solid #33FF57;">
+                    <i class="fas fa-mountain fa-2x" style="color: #33FF57; margin-bottom: 10px;"></i>
+                    <h3>Weekend Hill Station Getaway</h3>
+                    <p>Duration: **2 Days/1 Night** | Price: **$200**</p>
+                    <p style="font-size: 0.9rem;">Includes: Transportation, 3-Star Accommodation, All Major Meals.</p>
+                    <button class="btn" style="margin-top: 1rem;">Book This Tour</button>
+                </div>
+                <div class="card" style="border-top: 5px solid #3357FF;">
+                    <i class="fas fa-church fa-2x" style="color: #3357FF; margin-bottom: 10px;"></i>
+                    <h3>Heritage & Temple Visit</h3>
+                    <p>Duration: **1 Day** | Price: **$80**</p>
+                    <p style="font-size: 0.9rem;">Includes: Entry Tickets, Private Transport, Insightful Driver Commentary.</p>
+                    <button class="btn" style="margin-top: 1rem;">Book This Tour</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h1>Get in Touch & Book Your Ride</h1>
+            <p>Our customer service team is available 24/7 to assist you with bookings, inquiries, and support.</p>
+            <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                <form id="contactForm" style="flex: 1 1 400px; min-width: 300px;">
+                    <h3 style="margin-top: 0;">Quick Booking Inquiry</h3>
+                    <input type="text" placeholder="Your Full Name" required>
+                    <input type="tel" placeholder="Phone Number (e.g., +1-234-567-890)" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <input type="text" placeholder="Required Pickup Location" required>
+                    <textarea placeholder="Your Message / Booking Details" rows="5" required></textarea>
+                    <button type="submit" class="btn">Send Request <i class="fas fa-paper-plane"></i></button>
+                </form>
+                <div style="flex: 1 1 400px;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1533088.397018317!2d-106.84061840000001!3d33.68266445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87220087130932c5%3A0x64af073b64c8d57d!2sNew%20Mexico%2C%20USA!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+                    <div style="margin-top: 1.5rem; background-color: #f9f9f9; padding: 1rem; border-radius: 8px;">
+                        <p><i class="fas fa-phone-alt" style="color: var(--primary-color);"></i> **Phone:** +1-234-567-890</p>
+                        <p><i class="fas fa-envelope" style="color: var(--primary-color);"></i> **Email:** info@fastride.com</p>
+                        <p><i class="fas fa-map-marker-alt" style="color: var(--primary-color);"></i> **Address:** 123 Main St, City, State, Country</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 FastRide Cabs. All rights reserved. | Designed for Speed & Safety</p>
+        <div>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const sections = document.querySelectorAll('main section');
+            const main = document.querySelector('main');
+
+            // Find the active section based on URL hash or default to 'home'
+            const initialPage = window.location.hash.substring(1) || 'home';
+            
+            function setActiveSection(pageId) {
+                // Remove active class from all links and sections
+                navLinks.forEach(l => l.classList.remove('active'));
+                sections.forEach(s => s.classList.remove('active'));
+
+                // Add active class to corresponding link and section
+                const targetSection = document.getElementById(pageId);
+                const targetLink = document.querySelector(`.nav-links a[data-page="${pageId}"]`);
+
+                if (targetSection && targetLink) {
+                    targetLink.classList.add('active');
+                    targetSection.classList.add('active');
+                    // Scroll to the section if not already on the page load
+                    // Use main scroll to avoid issues with different viewports
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); 
+                }
+            }
+
+            // Initial call to set the active section on load
+            setActiveSection(initialPage);
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const page = link.getAttribute('data-page');
+                    // Update URL hash for better navigation and bookmarking
+                    window.history.pushState(null, null, `#${page}`);
+                    setActiveSection(page);
+                });
+            });
+
+            // Handle back/forward browser buttons
+            window.addEventListener('hashchange', () => {
+                const newPage = window.location.hash.substring(1) || 'home';
+                setActiveSection(newPage);
+            });
+
+            // Form submission
+            const form = document.getElementById('contactForm');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for contacting FastRide Cabs! We have received your request and will be in touch shortly.');
+                form.reset();
+            });
+        });
+    </script>
+</body>
+</html>
